@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task8</title>
+    <style>
+        h1, h2{
+            margin: 3% auto;
+        }
+        h1{
+            width: 80%;
+        }
+        h2{
+            width: 40%;
+        }
+
+        #daTable, th, td{
+            border: 3px solid #73AD21;
+        }
+
+        #daTable{
+            border-collapse: collapse;
+        }
+
+        th, td{
+            padding-right: 100px;
+        }
+    </style>
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <h1>Project "The unknown" with Team Leader Ivancho Ivanchov</h1>
+
+    <h2>Workers:</h2>
+
+    <table id="daTable">
+        <thead>
+             <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+             </tr>
+        </thead>
+        <tbody id="daTableBody">
+
+        </tbody>
+    </table>
+
+    <button onclick="module.prompt().append('daTableBody');return false;">Add New Worker</button>
+</body>
+</html>
