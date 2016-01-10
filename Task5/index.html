@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Task5</title>
+    <script src="javascript.js"></script>
 </head>
 <body>
-
+    <form action="">
+        <label for="radius">Radius</label>
+        <input id=radius type="text" name="radius">
+        <label for="area">Volume</label>
+        <input id=area type="text" placeholder="">
+        <button onclick="module.calcVol(this.form.radius.value).setVol('area');return false;">
+            Calculate
+        </button>
+    </form>
 </body>
 </html>
