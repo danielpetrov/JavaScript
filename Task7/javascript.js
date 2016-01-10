@@ -1,32 +1,43 @@
 var module = (function(){
     'use strict';
+    var self,
+        number,
+        KG_TO_LB = 2.20462262,
+        LB_TO_KG = 0.45359237038037829803270366517422;
 
-    var self;
+    function convertKilos(from, to, num){
+        number = num || 0;
 
-    function calculateVolume(radius){
-        radius = radius || 0;
-
-        this.volume = (4/3) * Math.PI * Math.pow(radius,3);
-        this.volume = parseFloat(Math.round(module.volume * 100) / 100).toFixed(4);
+        if(from === 'lb' && to === 'kg'){
+            number = num * LB_TO_KG;
+        } else if(from === 'kg' && to === 'lb'){
+            number =  num * KG_TO_LB;
+        } else {
+            number = num;
+        }
 
         return self;
     }
 
-    function getVolume(){
-        return this.volume || 0;
+    function getNumber(){
+        return number || 0;
     }
 
-    function setVolumeToPlaceholder(elementId){
-        document.getElementById(elementId).placeholder = this.getVol();
+    function printNumberToElementById(id){
+        var result = '' + module.getNum();
+
+        var output = document.getElementById(id);
+            output.textContent = result;
 
         return self;
     }
 
     self = {
-        calcVol : calculateVolume,
-        getVol : getVolume,
-        setVol : setVolumeToPlaceholder
+        convert : convertKilos,
+        getNum : getNumber,
+        setNum : printNumberToElementById
     };
 
     return self;
 })();
+

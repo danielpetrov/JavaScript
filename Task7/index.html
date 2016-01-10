@@ -7,17 +7,22 @@
 </head>
 <body>
     <form>
-        <label>Convert</label>
-        <input type="text">
+        <label to="number">Convert</label>
+        <input type="text", name="number", id="number">
+
         <select name="from">
             <option value="kg">kg</option>
             <option value="lb">lb</option>
         </select>
+
         <select name="to">
             <option value="kg">kg</option>
             <option value="lb">lb</option>
         </select>
-        <button onclick=""></button>
+        <button onclick="module.convert(from.value, to.value, number.value).setNum('output');return false;">
+            Calculate
+        </button>
     </form>
+    <div id="output"></div>
 </body>
 </html>
