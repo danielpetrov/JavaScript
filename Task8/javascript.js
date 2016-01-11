@@ -3,10 +3,10 @@ var module = (function(){
 
     var self,
         info,
-        requiredInfoText = "Please enter Name, Age and Gender sepparated by blank space!";
+        REQUIRED_INFO_TEXT = "Please enter Name, Age and Gender sepparated by blank space!";
 
     function promptUserForInfo(){
-        info = prompt(requiredInfoText);
+        info = prompt(REQUIRED_INFO_TEXT);
 
         if(info != null){
             info = info.split(" ");
@@ -21,18 +21,18 @@ var module = (function(){
             newData,
             result = '';
 
-        for(var td in info){
+        info.forEach(function(td){
             newData = document.createElement('td');
 
             result += '<td>';
-            result += info[td];
+            result += td;
             result += '<td/>';
 
             newData.innerHTML = result;
             newRow.appendChild(newData);
 
             result = '';
-        }
+        });
 
         tableBody.appendChild(newRow);
 
