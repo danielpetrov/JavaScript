@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task10</title>
+    <style>
+        div{
+            margin: 1% 1% 2%;
+        }
+        label{
+            margin-right: 1%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form" method="post">
+        <div>
+            <label for="fname">First Name*</label>
+            <input type="text" id="fname" placeholder="First Name" name="fname">
+        </div>
+        <div>
+            <label for="lname">Last Name*</label>
+            <input type="text" id="lname" placeholder="Last Name" name="lname">
+        </div>
+        <div>
+            <label>Gender*</label>
+            <input type="radio" name="gender" value="male" id="male">
+            <label for="male">Male</label>
+            <input type="radio" name="gender" value="female" id="female">
+            <label>Female</label>
+            <input type="hidden" name="gender" value="" id="gender" checked="checked">
+        </div>
+        <div>
+            <label for="country">Country*</label>
+            <select name="country" id="country">
+                <option value="" selected="selected">---Choose Country---</option>
+                <option value="bulgaria">Bulgaria</option>
+                <option value="bolivia">Bolivia</option>
+                <option value="somalia">Somalia</option>
+                <option value="" name="other">Other</option>
+            </select>
+        </div>
+
+        <div>
+            <button type=submit onclick="validateForm.validate().addEventToForm().submit();return false;">
+                Register
+            </button>
+        </div>
+    </form>
+    <script src="javascript.js"></script>
+</body>
+</html>
