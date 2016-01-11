@@ -1,4 +1,4 @@
-FirstPart = '<img src="image';
+FirstPart = '<img src="img/image';
 LastPart = '.jpg" height="500" width="500">';
 NumberOfImagesToRotate = 4;
 
