@@ -102,14 +102,20 @@ var validateForm = (function(){
         select.addEventListener("change", ifOther, false);
         function ifOther(ev) {
             if(ev.target.selectedIndex == 4){
-                var div = document.createElement('div');
-                div.innerHTML = 'Type your country here:';
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.name = 'country';
-                select.parentNode.appendChild(div);
-                select.parentNode.appendChild(input);
+                var div = document.createElement('div'),
+                    input = document.createElement('input'),
+                    label = document.createElement('for');
 
+                div.innerHTML = 'Type your country here:';
+                label.for = 'cntry';
+                label.innerHTML = 'Other Country:';
+                input.type = 'text';
+                input.name = 'oCountry';
+                input.id = 'cntry';
+
+                select.parentNode.parentNode.appendChild(div);
+                select.parentNode.parentNode.appendChild(label);
+                select.parentNode.parentNode.appendChild(input);
             }
         }
     }
