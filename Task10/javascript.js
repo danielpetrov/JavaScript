@@ -69,7 +69,6 @@ var validateForm = (function(){
 
     }
 
-
     function getRadioChecked(radioName)
     {
         var oRadio = document.forms[0].elements[radioName];
@@ -116,6 +115,11 @@ var validateForm = (function(){
                 select.parentNode.parentNode.appendChild(div);
                 select.parentNode.parentNode.appendChild(label);
                 select.parentNode.parentNode.appendChild(input);
+
+
+                if(validFields){
+                    validFields.push(document.getElementById('cntry'));
+                }
             }
         }
     }
