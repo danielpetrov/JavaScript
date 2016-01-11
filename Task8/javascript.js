@@ -18,20 +18,12 @@ var module = (function(){
     function appendToTable(id){
         var tableBody = document.getElementById(id),
             newRow = document.createElement('tr'),
-            newData,
-            result = '';
+            newData;
 
         info.forEach(function(td){
             newData = document.createElement('td');
-
-            result += '<td>';
-            result += td;
-            result += '<td/>';
-
-            newData.innerHTML = result;
+            newData.innerHTML = td;
             newRow.appendChild(newData);
-
-            result = '';
         });
 
         tableBody.appendChild(newRow);
