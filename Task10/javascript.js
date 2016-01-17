@@ -11,15 +11,24 @@ var validateForm = (function(){
     var self,
         EMPTY_FIELD_ERROR = "Please fill the required field! *",
         validFields,
-        allFields = [];
+        allFields = [],
+        otherCountry,
+        formIsValid;
 
     function validateForm(){
+
         allFields.push(document.getElementById('fname'));
         allFields.push(document.getElementById('lname'));
         allFields.push(getRadioChecked('gender'));
         allFields.push(document.getElementById('country'));
 
+        if(otherCountry){
+
+            allFields.push(document.getElementById('cntry'));
+        }
+
         allFields.forEach(function(element){
+
             validateEmptyField(element);
             //validate other stuff
         });
@@ -46,7 +55,10 @@ var validateForm = (function(){
     function removeErrorFromDiv(element){
         if(!(element.parentNode.innerHTML.indexOf(EMPTY_FIELD_ERROR) == -1)){
             var span = document.getElementsByTagName('span');
-            element.parentNode.removeChild(span[0]);
+            //debugger;
+           // if(span){
+                element.parentNode.removeChild(span[0]);
+           //}
         }
         element.parentNode.firstElementChild.nextElementSibling.style.borderColor = 'green';
         element.parentNode.firstElementChild.style.color = 'green';
@@ -54,7 +66,8 @@ var validateForm = (function(){
     }
 
     function validateEmptyField(element){
-        var formIsValid = true;
+
+        formIsValid = true;
 
         if(element.value == ''){
             formIsValid = false;
@@ -87,6 +100,7 @@ var validateForm = (function(){
         form.addEventListener("change", validate, false);
 
         function validate(ev) {
+
             var element = ev.target;
             if(element.type != 'button'){
                 validateEmptyField(element);
@@ -101,33 +115,40 @@ var validateForm = (function(){
         select.addEventListener("change", ifOther, false);
         function ifOther(ev) {
             if(ev.target.selectedIndex == 4){
-                var div = document.createElement('div'),
-                    input = document.createElement('input'),
-                    label = document.createElement('for');
+                otherCountry = document.createElement('div');
 
-                div.innerHTML = 'Type your country here:';
+                var  input = document.createElement('input'),
+                    label = document.createElement('for'),
+                    form = document.getElementById('form');
+
+                otherCountry.innerHTML = 'Type your country here:  <br />';
                 label.for = 'cntry';
                 label.innerHTML = 'Other Country:';
                 input.type = 'text';
                 input.name = 'oCountry';
                 input.id = 'cntry';
 
-                select.parentNode.parentNode.appendChild(div);
-                select.parentNode.parentNode.appendChild(label);
-                select.parentNode.parentNode.appendChild(input);
+                form.insertBefore(otherCountry, form.children[4]);
+                otherCountry.appendChild(label);
+                otherCountry.appendChild(input);
 
-
-                if(validFields){
-                    validFields.push(document.getElementById('cntry'));
+            } else {
+                if(otherCountry){
+                    document.getElementById('form').removeChild(otherCountry);
+                    otherCountry = null;
                 }
             }
         }
     }
 
     function submitForm(){
-        if(validFields){//if not undefined
+        if(formIsValid){//if not undefined
             //some ajax request maybe
+            alert('success!');
             validFields = undefined;
+        }
+        else{
+            alert('notValidFields');
         }
     }
 
